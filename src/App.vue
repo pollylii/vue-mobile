@@ -1,24 +1,27 @@
 <template>
   <div id="app">
-      <router-view v-if="!$route.meta.keepAlive"></router-view>
-      <keep-alive>
-        <router-view v-if="$route.meta.keepAlive"></router-view>
-      </keep-alive>
+    <router-view />
+	<apo-foot></apo-foot>
   </div>
 </template>
 
 <script>
+import Foot from '@/components/Foot.vue';
+
 export default {
-  name: 'App'
-}
+	components: {
+		'apo-foot': Foot
+	}
+};
 </script>
 
-<style lang="less">
-@import './assets/css/reset.css';
-@import './assets/css/common.css';
-#app {
-  width: 100%;
-  height: 100%;
-  position: relative;
+<style>
+body {
+  font-size: 16px;
+  background-color: #f8f8f8;
+  -webkit-font-smoothing: antialiased;
 }
+
+@import "asserts/styles/weui.min.css"
+
 </style>
