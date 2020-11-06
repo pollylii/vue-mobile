@@ -1,32 +1,10 @@
 <template>
 	<div class="info">
-  
-  	<div class="fixed">
-		<van-steps :active="active">
-			<van-step>填写信息</van-step>
-			<van-step>智能匹配</van-step>
-			<van-step>产品申请</van-step>
-			<van-step>反馈结果</van-step>
-		</van-steps>
-	</div>
-  
-	<div class="step-mask"></div>
-
-	<div :is="currentView"></div>
-			
-	<div class="van-hairline--top"></div>
-			
-	<van-row>
-	  	<van-col offset="6" span="12">
-	  		<van-button 
-				type="primary" 
-				size="large" 
-				:text="buttonTip"
-				@click="nextStep"
-			></van-button>
-		</van-col>
-	</van-row>
-  
+		<div class="container" id="container">
+			<div class="page__hd">
+				<img style="width:100%;height:100%" src="../../../src/asserts/images/ads.png" />
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -52,8 +30,8 @@ export default {
 	data() {
 		return {
 			list: [
-				'InputData', 
-				'Products', 
+				'InputData',
+				'Products',
 				'ProductApply',
 				'Feedback'
 			],
@@ -69,7 +47,7 @@ export default {
 				this.currentView = this.list[this.active];
 			else
 				this.$router.push("/search");
-			
+
 			if (this.active >= 3) {
 				this.buttonTip = "查询进度";
 			}
@@ -80,24 +58,9 @@ export default {
 </script>
 
 <style scoped>
-.info {
-	padding-bottom: 100px;
-}
-.fixed {
-	position: fixed;
-	top:0;
-	left:0;
-	width:100%;
-	z-index:1;
-}
-.step-mask {
-	height: 64px;
-}
-.van-hairline--top {
-    height: 30px;
-    background-color: white;
-    &::after {
-      top: 5px;
-    }
+.page__hd {
+	width: 100%;
+	height: 100%;
+	background: #0084FF;
 }
 </style>

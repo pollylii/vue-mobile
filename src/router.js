@@ -12,8 +12,15 @@ const routes = [
     name: 'home',
     component: () => import('./view/home'),
     meta: {
-      title: '阿玻罗金融科技'
+      title: '首页'
     }
+  },
+  {
+    name: 'goods',
+    component: () => import('./view/goods'),
+    meta: {
+      title: '列表'
+    },
   },
   {
     name: 'user',

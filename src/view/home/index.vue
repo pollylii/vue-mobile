@@ -1,34 +1,33 @@
 <template>
   <div class="home">
-    <div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
-
     <div class="container" id="container">
-	
 	    <div class="page__hd">
-	        <h1 class="page__title">欢迎页</h1>
-	        <p class="page__desc">本项目基于vant-demo项目，增加了许多实用功能，涉及到了vue+vant+axios+mockjs等项目，是新手开发的良好起点。<br>
-			本项目包括home/info/search/user四个页面，由底部导航栏进行切换。</p>
+            <img style="width:100%;height:100%" src="../../../src/asserts/images/home_pg.png" />
 	    </div>
-	
-	</div>	
+		<div class="btn">
+            <van-button type="warning" block to="goods" color="#FF5E00" height="50px;">立即体验</van-button>
+        </div>
+	</div>
   </div>
 </template>
 
 <script>
-import { Panel } from 'vant';
+import { Button } from 'vant';
 
 export default {
 	components: {
-		[Panel.name]: Panel
-	}
+		[Button.name]: Button,
+    }
 };
 </script>
 
 <style scoped>
-.page__hd {
-	padding: 40px
-}
-.page__bd_spacing {
-	padding: 0 15px
-}
+	.page__hd {
+		width: 100%;
+	}
+	.btn{
+		position: fixed;
+		width: 100%;
+		bottom: 0px;
+	}
 </style>
