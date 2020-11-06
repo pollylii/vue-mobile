@@ -3,7 +3,7 @@
 	<div class="container" id="container">
         <div class="top-bg">
             <div class="f-l">
-                <p class="num">522</p>
+                <p class="num">52298</p>
                 <p style="color: #FFFFFF;">今日获客</p>
             </div>
             <div class="f-r">
@@ -19,12 +19,6 @@
                         </div>
                         <div class="color-z mar-10">MAC码</div>
                         <van-field v-model="value" placeholder="请输入MAC码" />
-<!--                        <div class="color-z mar-10">最近活跃</div>-->
-<!--                        <div class="flex mar-10">-->
-<!--                            <p><van-field v-model="starttime" clearable placeholder="-&#45;&#45;" @focus="start" /></p>-->
-<!--                            <p><van-field v-model="endtime" clearable placeholder="-&#45;&#45;" @focus="end" /></p>-->
-<!--                            <p style="padding-top: 10px;" class="color-z"><van-icon name="tosend" size="20px"/></p>-->
-<!--                        </div>-->
                         <div class="flex">
                             <div class="flex-1 color-z">
                                 <p style="margin-left: 10px;">状态</p>
@@ -32,12 +26,12 @@
                             </div>
                             <div class="flex-1 color-z">
                                 <p>访问次数</p>
-                                <van-field readonly clickable :value="value" placeholder="" @click="showPicker = true"/>
+                                <van-field readonly clickable :value="value1" placeholder="" @click="showPicker1 = true"/>
                             </div>
                         </div>
-                        <div style="text-align: center;">
-                            <van-button type="default" size="small" class="ref-btn">重置</van-button>
-                            <van-button type="default" size="small" class="conf-btn">确定</van-button>
+                        <div style="text-align: center;" >
+                            <van-button type="default" size="small" class="ref-btn search-btn">重置</van-button>
+                            <van-button type="default" size="small" class="conf-btn search-btn">确定</van-button>
                         </div>
                     </div>
                 </van-popup>
@@ -51,18 +45,46 @@
             </div>
         </div>
         <div class="list">
-            <div class="bg-list" v-for="i in 5" :key="i">
+            <div class="bg-list" v-for="i in 4" :key="i">
                 <div class="flex">
-                    <div><img class="imgClass" src="https://usale.res.soeasy666.com/imgf3295d0b1f674406b70897869a81c85d2.jpg" alt="头像"></div>
-                    <div>
-                        <p class="d-t">2020/11/5 21:40</p>
-                        <p class="t-t">14:3c:3c:77:55:ba</p>
+                    <div><p class="title-left">回流</p></div>
+                    <div class="mes-right">
+                        <p class="d-t">14:3c:3c:77:55:ba<span style="color: #2CBCFF;font-size: 12px;">【MAC】</span></p>
+                        <p class="t-t">2020/11/5 21:40</p>
                     </div>
                 </div>
                 <div class="flex">
                     <div class="flex-1">
-                        <p class="color-z">状态</p>
-                        <p>回流</p>
+                        <p class="color-z">手机</p>
+                        <p>华为</p>
+                    </div>
+                    <div class="flex-1">
+                        <p class="color-z">访问次数</p>
+                        <p>2</p>
+                    </div>
+                    <div class="flex-1">
+                        <p class="color-z">距离/m</p>
+                        <p>46.4</p>
+                    </div>
+                    <div class="flex-1">
+                        <p class="color-z">平均停留/s</p>
+                        <p>1953</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-list" v-for="i in 4" :key="i">
+                <div class="flex">
+                    <div><p class="title-left">新增</p></div>
+                    <div class="mes-right">
+                        <p class="d-t">14:3c:3c:77:55:ba<span style="color: #2CBCFF;font-size: 12px;">【MAC】</span></p>
+                        <p class="t-t">2020/11/5 21:40</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="flex-1">
+                        <p class="color-z">手机</p>
+                        <p>华为</p>
                     </div>
                     <div class="flex-1">
                         <p class="color-z">访问次数</p>
@@ -82,6 +104,9 @@
 
         <van-popup v-model="showPicker" round position="bottom">
             <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm"/>
+        </van-popup>
+        <van-popup v-model="showPicker" round position="bottom">
+            <van-picker show-toolbar :columns="columns1" @cancel="showPicker1 = false" @confirm="onConfirm1"/>
         </van-popup>
 
         <!-- 开始时间控件 -->
@@ -114,7 +139,7 @@
 <script>
 import { Field, Icon, Button, Popup, DatetimePicker, Picker} from 'vant';
 import LoanCell from '@/components/LoanCell.vue';
-import api from '../../axios/api.js'
+import axios from 'axios'
 
 export default {
   components: {
@@ -127,6 +152,23 @@ export default {
 	  'apo-cell': LoanCell
   },
   data() {
+/*      var url = 'https://test.soeasy666.com/api/probe/probeData/page'
+      var data = {
+          "current": 1,
+          "map": {},
+          "model": {
+          },
+          "order": "desc",
+          "size": 100,
+          "sort": "createTime"
+      }
+      axios.post(url,data,{headers:{
+              tenant:"MDAwMA==",
+              token:"Bearer test",
+              'Content-Type':'application/json'
+          }}).then(res=>{
+              console.log(res)
+      })*/
     return {
         statusP: [
             {p:'新增'},
@@ -149,7 +191,9 @@ export default {
         endtime1: "", //结束时间时间戳
         value: '全状态',
         showPicker: false,
+        showPicker1: false,
         columns: ['新增', '常来', '不常来', '回流'],
+        columns1:['1次', '2次', '3次', '4次', '5次', '6次', '7次', '8次', '9次'],
         value1: 0,
         value2: 'a',
         option1: [
@@ -166,6 +210,10 @@ export default {
       onConfirm(value) {
           this.value = value;
           this.showPicker = false;
+      },
+      onConfirm1(value) {
+          this.value1 = value;
+          this.showPicker1 = false;
       },
       showPopup() {
           this.show = true;
@@ -319,6 +367,7 @@ export default {
         font-size: 12px;
         color: #999999;
         letter-spacing: 0;
+        text-align: left;
     }
     .color-z{
         color: #999999;
@@ -336,25 +385,34 @@ export default {
     .icon{
         color: #999999;
     }
-    .ref-btn{
+    .search-btn{
         font-size: 18px;
-        color: #666666;
-        letter-spacing: 0;
         height: 44px;
         width: 135px;
-        background: #E4E4E4;
         border-radius: 5px;
         border-radius: 5px;
         margin-right: 15px;
+        letter-spacing: 0;
+    }
+    .ref-btn{
+        color: #666666;
+        background: #E4E4E4;
     }
     .conf-btn{
-        font-size: 18px;
+        color: #FFFFFF;
+        background: #2CBCFF;
+    }
+    .title-left{
+        font-size: 16px;
         color: #FFFFFF;
         letter-spacing: 0;
-        height: 44px;
-        width: 135px;
-        background: #2CBCFF;;
-        border-radius: 5px;
-        border-radius: 5px;
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background: #2CBCFF;
+    }
+    .mes-right{
+        margin-left: 10px;
     }
 </style>
