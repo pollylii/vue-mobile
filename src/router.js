@@ -33,7 +33,7 @@ const routes = [
     name: 'info',
     component: () => import('./view/info'),
     meta: {
-      title: '产品申请'
+      title: '广告投放'
     }
   },
   {

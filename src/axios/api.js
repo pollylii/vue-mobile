@@ -14,7 +14,7 @@ axios.interceptors.response.use(function(response) {
 }, function(error) {
   return Promise.reject(error);
 })
- 
+
 export function fetch(url, params) {
   return new Promise((resolve, reject) => {
     axios.post(url, params)
@@ -26,7 +26,7 @@ export function fetch(url, params) {
       })
   })
 }
- 
+
 export default {
   getNews(url, params) {
     return fetch(url, params);

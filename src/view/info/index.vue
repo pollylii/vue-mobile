@@ -61,6 +61,7 @@ export default {
 .page__hd {
 	width: 100%;
 	height: 100%;
-	background: #0084FF;
+	position:absolute;
+	z-index:-1;
 }
 </style>

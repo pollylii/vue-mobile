@@ -3,85 +3,77 @@
 	<div class="container" id="container">
         <div class="top-bg">
             <div class="f-l">
-                <p class="num">52298</p>
-                <p style="color: #FFFFFF;">今日获客</p>
+                <p class="num">522</p>
+                <p style="color: #FFFFFF;line-height: 20px;">今日获客</p>
             </div>
             <div class="f-r">
                 <p class="r"><van-icon name="search" size="24px" @click="showPopup"/></p>
-                <van-popup v-model="show" position="top" :style="{ height: '50%' }" >
-                    <div class="mar-10">
-                        <div style="font-size: 16px;">今日拓客</div>
-                        <div class="color-z mar-10">停留时间</div>
-                        <div class="flex mar-10">
-                            <p><van-field v-model="starttime" clearable placeholder="---" @focus="start" /></p>
-                            <p><van-field v-model="endtime" clearable placeholder="---" @focus="end" /></p>
-                            <p style="padding-top: 10px;" class="color-z"><van-icon name="tosend" size="20px"/></p>
-                        </div>
-                        <div class="color-z mar-10">MAC码</div>
-                        <van-field v-model="value" placeholder="请输入MAC码" />
-                        <div class="flex">
-                            <div class="flex-1 color-z">
-                                <p style="margin-left: 10px;">状态</p>
-                                <van-field readonly clickable :value="value" placeholder="" @click="showPicker = true"/>
+                <van-popup v-model="show" position="top" :style="{ height: '60%' }" >
+                    <div class="mar-15">
+                        <div style="font-size: 16px;font-family: PingFang-SC-Heavy;line-height: 22px;">今日拓客</div>
+                        <div style="margin: 11px 19px 30px 0;">
+                            <div class="color-z">停留时间</div>
+                            <div class="flex">
+                                <p class="s-t"><van-field v-model="starttime" clearable placeholder="---" @focus="start" /></p>
+                                <p class="s-t"><van-field v-model="endtime" clearable placeholder="---" @focus="end" /></p>
+                                <p class="s-t">
+                                    <img height="18px" width="16px" src="@/asserts/images/icon_rili.svg">
+                                </p>
                             </div>
-                            <div class="flex-1 color-z">
-                                <p>访问次数</p>
-                                <van-field readonly clickable :value="value1" placeholder="" @click="showPicker1 = true"/>
+                            <div class="color-z">MAC码</div>
+                            <p class="s-t"><van-field v-model="value" placeholder="请输入MAC码" /></p>
+                            <div class="flex">
+                                <div class="flex-1 color-z">
+                                    <p style="margin-left: 10px;">状态</p>
+                                    <p class="s-t">
+                                        <van-field readonly clickable :value="value" placeholder="" @click="showPicker = true"/>
+                                    </p>
+                                </div>
+                                <div class="flex-1 color-z">
+                                    <p>访问次数</p>
+                                    <p class="s-t">
+                                        <van-field readonly clickable :value="value1" placeholder="" @click="showPicker1 = true"/>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div style="text-align: center;" >
-                            <van-button type="default" size="small" class="ref-btn search-btn">重置</van-button>
-                            <van-button type="default" size="small" class="conf-btn search-btn">确定</van-button>
+                        <div style="text-align: center;margin-bottom: 20px" >
+                            <van-button type="default" size="small" class="ref-btn search-btn" @click="show = false">重置</van-button>
+                            <van-button type="default" size="small" class="conf-btn search-btn" @click="show = false">确定</van-button>
                         </div>
                     </div>
                 </van-popup>
                 <van-button type="default" size="mini" class="ads"  to="info">投放广告</van-button>
             </div>
             <div class="inster-tag flex">
-                <p class="flex-1">时间<van-icon name="arrow-down" class="icon" /></p>
-                <p class="flex-1">访问<van-icon name="arrow-down" class="icon" /></p>
-                <p class="flex-1"> 距离<van-icon name="arrow-down" class="icon" /></p>
-                <p class="flex-1">停留时长<van-icon name="arrow-down" class="icon" /></p>
+                <p class="flex-1 mar-tb-19" style="padding-left:20px;">
+                    <span class="mar-r-4">时间</span>
+                    <img height="5px" width="8px" src="@/asserts/images/xiala02.svg">
+                </p>
+                <p class="flex-1 mar-tb-19">
+                    <span class="mar-r-4">访问</span>
+                    <img height="5px" width="8px" src="@/asserts/images/xiala02.svg">
+                </p>
+                <p class="flex-1 mar-tb-19">
+                    <span class="mar-r-4">距离</span>
+                    <img height="5px" width="8px" src="@/asserts/images/xiala02.svg">
+                </p>
+                <p class="flex-1 mar-tb-19" style="padding-right:20px;">
+                    <span class="mar-r-4">停留时长</span>
+                    <img height="5px" width="8px" src="@/asserts/images/xiala02.svg">
+                </p>
             </div>
         </div>
         <div class="list">
-            <div class="bg-list" v-for="i in 4" :key="i">
-                <div class="flex">
-                    <div><p class="title-left">回流</p></div>
+            <div class="bg-list" v-for="i in 10" :key="i">
+                <div class="flex top-c">
+                    <div><p class="title-left">{{i%2===0?'回流':'新增'}}</p></div>
                     <div class="mes-right">
                         <p class="d-t">14:3c:3c:77:55:ba<span style="color: #2CBCFF;font-size: 12px;">【MAC】</span></p>
                         <p class="t-t">2020/11/5 21:40</p>
                     </div>
                 </div>
-                <div class="flex">
-                    <div class="flex-1">
-                        <p class="color-z">手机</p>
-                        <p>华为</p>
-                    </div>
-                    <div class="flex-1">
-                        <p class="color-z">访问次数</p>
-                        <p>2</p>
-                    </div>
-                    <div class="flex-1">
-                        <p class="color-z">距离/m</p>
-                        <p>46.4</p>
-                    </div>
-                    <div class="flex-1">
-                        <p class="color-z">平均停留/s</p>
-                        <p>1953</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-list" v-for="i in 4" :key="i">
-                <div class="flex">
-                    <div><p class="title-left">新增</p></div>
-                    <div class="mes-right">
-                        <p class="d-t">14:3c:3c:77:55:ba<span style="color: #2CBCFF;font-size: 12px;">【MAC】</span></p>
-                        <p class="t-t">2020/11/5 21:40</p>
-                    </div>
-                </div>
-                <div class="flex">
+                <div class="flex bottom-c">
                     <div class="flex-1">
                         <p class="color-z">手机</p>
                         <p>华为</p>
@@ -105,7 +97,7 @@
         <van-popup v-model="showPicker" round position="bottom">
             <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm"/>
         </van-popup>
-        <van-popup v-model="showPicker" round position="bottom">
+        <van-popup v-model="showPicker1" round position="bottom">
             <van-picker show-toolbar :columns="columns1" @cancel="showPicker1 = false" @confirm="onConfirm1"/>
         </van-popup>
 
@@ -170,12 +162,6 @@ export default {
               console.log(res)
       })*/
     return {
-        statusP: [
-            {p:'新增'},
-            {p:'常来'},
-            {p:'不常来'},
-            {p:'回流'},
-        ],
         show: false,
         startTimeShow: false, //开始时间弹窗
         endTimeShow: false, //结束时间弹窗
@@ -196,13 +182,6 @@ export default {
         columns1:['1次', '2次', '3次', '4次', '5次', '6次', '7次', '8次', '9次'],
         value1: 0,
         value2: 'a',
-        option1: [
-            { text: '全状态', value: 0 },
-            { text: '新增', value: 1 },
-            { text: '常来', value: 2 },
-            { text: '不常来', value: 3 },
-            { text: '回流', value: 4 },
-        ],
     };
   },
 
@@ -288,8 +267,14 @@ export default {
         width: 100%;
         font-size: 14px;
     }
-    .mar-10{
-        margin: 10px !important;
+    .mar-15{
+        margin: 11px 0 11px 15px;
+    }
+    .mar-tb-19{
+        margin: 19px 0;
+    }
+    .mar-r-4{
+        margin-right: 4px;
     }
     .flex{
         display: flex;
@@ -302,28 +287,31 @@ export default {
     }
     .f-l{
         float: left;
-        margin: 40px 0 0 25px;
+        margin: 20px 0 0 32px;
     }
     .f-r{
-        margin: 50px 25px 0 0;
+        margin: 6px 19px 0 0;
         float: right;
     }
     .top-bg{
         width: 100%;
-        height: 160px;
-        background: rgb(44,188,255);
+        height: 156px;
+        background-image: url("../../asserts/images/bg_1x.png");
     }
     .num{
+        font-family: DIN-Bold;
         font-size: 36px;
         color: #FFFFFF;
         letter-spacing: 0;
         text-align: center;
+        line-height: 44px;
     }
     .r{
         color: #ffffff;
         margin-left: 60px;
     }
     .ads{
+        opacity: 0.6;
         background: rgb(44,188,255);
         text-align: center;
         width: 88px;
@@ -337,17 +325,19 @@ export default {
         margin: auto;
         left: 0;
         right: 0;
-        text-align: center;
+        top: 104px;
+        width: 92%;
+        height: 60px;
         box-shadow: #989A9C;
         border-radius: 5px;
         background: #ffffff;
-        width: 90%;
-        height: 60px;
+        line-height: 22px;
         position: absolute;
-        top: 130px;
+        font-size: 16px;
+        color: #3F3F3F;
     }
     .list{
-        margin-top: 40px;
+        margin-top: 18px;
         height: 100%;
         background: #F4F4F4;
     }
@@ -375,15 +365,12 @@ export default {
     .bg-list{
         text-align: center;
         background: #ffffff;
-        margin: 10px;
-        padding: 10px;
+        margin: 15px;
+        padding: 15px;
         box-sizing: border-box;
         border-radius: 5px;
-        height: 133px;
+        height: 143px;
         line-height: 30px;
-    }
-    .icon{
-        color: #999999;
     }
     .search-btn{
         font-size: 18px;
@@ -410,9 +397,26 @@ export default {
         line-height: 40px;
         width: 40px;
         border-radius: 50%;
-        background: #2CBCFF;
+        background-image: linear-gradient(0deg, #5C8CFF 0%, #54C3FF 100%);
     }
     .mes-right{
         margin-left: 10px;
+    }
+    .top-c{
+        height: 40px;
+        margin-bottom: 22px;
+    }
+    .bottom-c{
+        height: 48px;
+        margin-bottom: 15px;
+        line-height: 24px;
+    }
+    /deep/ .van-cell{
+        padding: 0;
+    }
+    .s-t{
+        height: 20px;
+        line-height: 20px;
+        padding: 15px 0 30px;
     }
 </style>
